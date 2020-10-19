@@ -1,0 +1,262 @@
+/* ###   Colors   ### */
+/* ### Fonts ### */
+@font-face {
+  font-family: "Quicksand regular";
+  src: url(../fonts/Quicksand-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Quicksand bold";
+  src: url(../fonts/Quicksand-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Alfa Slab One";
+  src: url(../fonts/AlfaSlabOne-Regular.ttf) format("truetype");
+}
+
+/* ### Misc ### */
+html {
+  font-family: "Quicksand regular", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: "Alfa Slab One", serif;
+  font-weight: lighter;
+}
+
+.beer-card-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.beer-card-wrapper .card-wrapper {
+  max-width: 300px;
+  margin: 15px;
+  -ms-flex-preferred-size: 23%;
+      flex-basis: 23%;
+  -webkit-box-shadow: 4px 4px 10px #a09393;
+          box-shadow: 4px 4px 10px #a09393;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.beer-card-wrapper .card-wrapper h2,
+.beer-card-wrapper .card-wrapper .tagline,
+.beer-card-wrapper .card-wrapper .brew-date {
+  text-align: center;
+}
+
+.beer-card-wrapper .card-wrapper .tagline {
+  font-weight: normal;
+}
+
+.beer-card-wrapper .card-wrapper .image-card {
+  width: 50%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 10px auto;
+  background-position: center;
+}
+
+.beer-card-wrapper .card-wrapper .brew-date div {
+  display: block;
+  font-family: "Quicksand bold", sans-serif;
+}
+
+.beer-card-wrapper .recipe {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  left: -999999px;
+  top: 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: 4px 4px 10px #a09393;
+          box-shadow: 4px 4px 10px #a09393;
+}
+
+.beer-card-wrapper .recipe h2,
+.beer-card-wrapper .recipe .recipe-notes {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+.beer-card-wrapper .recipe h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.beer-card-wrapper .recipe h3 {
+  background: #fcbf49;
+  padding: 10px 30px;
+  text-transform: capitalize;
+  font-variant: small-caps;
+  font-size: 25px;
+  font-family: "Alfa Slab One", serif;
+  font-weight: lighter;
+  margin: 0;
+}
+
+.beer-card-wrapper .recipe .recipe-notes {
+  height: 100%;
+}
+
+.beer-card-wrapper .recipe .recipe-ingredients,
+.beer-card-wrapper .recipe .recipe-basics,
+.beer-card-wrapper .recipe .recipe-method,
+.beer-card-wrapper .recipe .recipe-tip {
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
+  margin: 15px;
+  margin-top: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+
+.beer-card-wrapper .recipe .recipe-ingredients ul,
+.beer-card-wrapper .recipe .recipe-basics ul,
+.beer-card-wrapper .recipe .recipe-method ul {
+  padding: 0;
+}
+
+.beer-card-wrapper .recipe .recipe-ingredients li,
+.beer-card-wrapper .recipe .recipe-ingredients .yeast,
+.beer-card-wrapper .recipe .recipe-basics li,
+.beer-card-wrapper .recipe .recipe-basics .yeast,
+.beer-card-wrapper .recipe .recipe-method li,
+.beer-card-wrapper .recipe .recipe-method .yeast {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #fcbf49;
+  padding: 0 10px;
+  margin: 5px;
+}
+
+.beer-card-wrapper .recipe .recipe-ingredients li span:first-child,
+.beer-card-wrapper .recipe .recipe-ingredients .yeast span:first-child,
+.beer-card-wrapper .recipe .recipe-basics li span:first-child,
+.beer-card-wrapper .recipe .recipe-basics .yeast span:first-child,
+.beer-card-wrapper .recipe .recipe-method li span:first-child,
+.beer-card-wrapper .recipe .recipe-method .yeast span:first-child {
+  width: 55%;
+}
+
+.beer-card-wrapper .recipe .recipe-ingredients li span,
+.beer-card-wrapper .recipe .recipe-ingredients .yeast span,
+.beer-card-wrapper .recipe .recipe-basics li span,
+.beer-card-wrapper .recipe .recipe-basics .yeast span,
+.beer-card-wrapper .recipe .recipe-method li span,
+.beer-card-wrapper .recipe .recipe-method .yeast span {
+  width: 45%;
+}
+
+.beer-card-wrapper .recipe .recipe-ingredients .hops li,
+.beer-card-wrapper .recipe .recipe-basics .hops li,
+.beer-card-wrapper .recipe .recipe-method .hops li {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border: 0;
+}
+
+.beer-card-wrapper .recipe .recipe-ingredients .hops span,
+.beer-card-wrapper .recipe .recipe-basics .hops span,
+.beer-card-wrapper .recipe .recipe-method .hops span {
+  border-bottom: 1px solid #fcbf49;
+}
+
+.beer-card-wrapper .recipe .recipe-ingredients .hops span:first-child,
+.beer-card-wrapper .recipe .recipe-ingredients .hops span:nth-child(3),
+.beer-card-wrapper .recipe .recipe-basics .hops span:first-child,
+.beer-card-wrapper .recipe .recipe-basics .hops span:nth-child(3),
+.beer-card-wrapper .recipe .recipe-method .hops span:first-child,
+.beer-card-wrapper .recipe .recipe-method .hops span:nth-child(3) {
+  -ms-flex-preferred-size: 55%;
+      flex-basis: 55%;
+}
+
+.beer-card-wrapper .recipe .recipe-ingredients .yeast,
+.beer-card-wrapper .recipe .recipe-basics .yeast,
+.beer-card-wrapper .recipe .recipe-method .yeast {
+  margin-top: 16px;
+}
+
+.beer-card-wrapper .recipe .recipe-basics .recipe-icon {
+  margin-bottom: 6px;
+}
+
+.beer-card-wrapper .recipe .recipe-method div:not(.recipe-icon) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  margin: 5px;
+  text-transform: capitalize;
+  font-variant: small-caps;
+  font-size: 20px;
+  font-family: "Quicksand bold", sans-serif;
+  border-bottom: 1px solid #fcbf49;
+}
+
+.beer-card-wrapper .recipe .recipe-method div:not(.recipe-icon) span {
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
+}
+
+.beer-card-wrapper .recipe .recipe-method p {
+  padding: 10px;
+  margin: 15px 5px 0 15px;
+  font-style: italic;
+  color: #003049;
+  text-transform: none;
+}
+
+.beer-card-wrapper .recipe .recipe-method h4 {
+  margin: 5px;
+  font-family: "Quicksand bold", sans-serif;
+  padding: 5px 10px;
+}
+
+.beer-card-wrapper .recipe .recipe-tip {
+  text-transform: none;
+}
+
+.beer-card-wrapper .recipe .recipe-notes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 20px 4%;
+}
+
+.beer-card-wrapper .recipe .recipe-notes .underlined {
+  width: 25%;
+  border-bottom: 1px solid #fcbf49;
+}
+
+.recipe-icon {
+  width: 50px;
+  height: 50px;
+  background-size: 170%;
+  margin-bottom: -10px;
+  margin-top: 10px;
+}
+/*# sourceMappingURL=main.css.map */

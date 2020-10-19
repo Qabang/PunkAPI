@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Punk</title>
+    <link rel="stylesheet" href="assets/styles/main.css" />
+  </head>
+  <style></style>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>Start</li>
+          <li>Configurate library</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+    <section class="search-box">
+      <label>Malt<input type="radio" name="malt" id="search-input" /></label>
+      <label>Hops<input type="radio" name="hops" id="search-input" /></label>
+      <label>Yeast<input type="radio" name="yeast" id="search-input" /></label>
+      <label>ABV<input type="radio" name="abv" id="search-input" /></label>
+      <label>IBU<input type="radio" name="ibu" id="search-input" /></label>
+      <label
+        >Food pairing<input type="radio" name="food" id="search-input"
+      /></label>
+      <input type="text" name="search" id="search-input" />
+      <input type="button" value="Sök" />
+    </section>
+    <section class="beer-card-wrapper"></section>
+    <section class="pagination">
+      <input type="submit" value="Previous page" class="prev-button" disabled />
+      <input type="submit" value="Next page" class="next-button" />
+    </section>
+    <button onclick="generatePDF('Buzz')">Download as PDF</button>
+    <script src="assets/scripts/html2pdf.bundle.js"></script>
+    <script src="assets/scripts/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+.beer-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  .card-wrapper {
+    max-width: 300px;
+    margin: 15px;
+    flex-basis: 23%;
+    box-shadow: $box-shadow;
+    padding: 15px;
+    border-radius: 10px;
+
+    h2,
+    .tagline,
+    .brew-date {
+      text-align: center;
+    }
+
+    .tagline {
+      font-weight: normal;
+    }
+
+    .image-card {
+      width: 50%;
+      height: 150px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin: 10px auto;
+      background-position: center;
+    }
+
+    .brew-date {
+      div {
+        display: block;
+        font-family: $text-bold;
+      }
+    }
+  }
+
+  .recipe {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    left: -999999px;
+    top: 0;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    box-shadow: $box-shadow;
+
+    h2,
+    .recipe-notes {
+      flex-basis: 100%;
+    }
+
+    h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      background: $yellow;
+      padding: 10px 30px;
+      text-transform: capitalize;
+      font-variant: small-caps;
+      font-size: 25px;
+      font-family: $heading;
+      font-weight: lighter;
+      margin: 0;
+    }
+
+    .recipe-notes {
+      height: 100%;
+    }
+
+    .recipe-ingredients,
+    .recipe-basics,
+    .recipe-method,
+    .recipe-tip {
+      flex-basis: 45%;
+      margin: 15px;
+      margin-top: 0;
+      padding: 0;
+      text-transform: capitalize;
+    }
+
+    .recipe-ingredients,
+    .recipe-basics,
+    .recipe-method {
+      ul {
+        padding: 0;
+      }
+      li,
+      .yeast {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $yellow;
+        padding: 0 10px;
+        margin: 5px;
+
+        span:first-child {
+          width: 55%;
+        }
+        span {
+          width: 45%;
+        }
+      }
+
+      .hops {
+        li {
+          flex-wrap: wrap;
+          border: 0;
+        }
+
+        span {
+          border-bottom: 1px solid $yellow;
+        }
+        span:first-child,
+        span:nth-child(3) {
+          flex-basis: 55%;
+        }
+      }
+
+      .yeast {
+        margin-top: 16px;
+      }
+    }
+
+    .recipe-basics {
+      .recipe-icon {
+        margin-bottom: 6px;
+      }
+    }
+
+    .recipe-method {
+      div:not(.recipe-icon) {
+        display: flex;
+        padding: 10px;
+        margin: 5px;
+        text-transform: capitalize;
+        font-variant: small-caps;
+        font-size: 20px;
+        font-family: $text-bold;
+        border-bottom: 1px solid $yellow;
+
+        span {
+          flex-basis: 45%;
+        }
+      }
+
+      p {
+        padding: 10px;
+        margin: 15px 5px 0 15px;
+        font-style: italic;
+        color: $blue;
+        text-transform: none;
+      }
+
+      h4 {
+        margin: 5px;
+        font-family: $text-bold;
+        padding: 5px 10px;
+      }
+    }
+    .recipe-tip {
+      text-transform: none;
+    }
+
+    .recipe-notes {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 4%;
+
+      .underlined {
+        width: 25%;
+        border-bottom: 1px solid $yellow;
+      }
+    }
+  }
+}
+
+.recipe-icon {
+  width: 50px;
+  height: 50px;
+  background-size: 170%;
+  margin-bottom: -10px;
+  margin-top: 10px;
+}
