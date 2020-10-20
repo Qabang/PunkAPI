@@ -274,20 +274,26 @@ function getAllBeers(page, search_query = '') {
         basics_wrapper.appendChild(boil_volume)
 
         let abv_basics = document.createElement('li')
-        abv_basics.innerHTML = 'ABV: <span>' + value.abv + '</span>'
+        abv_basics.innerHTML = 'ABV: <span>' + value.abv + '%</span>'
         basics_wrapper.appendChild(abv_basics)
 
         let target_fg = document.createElement('li')
-        target_fg.innerHTML = 'Target FG: <span>' + value.target_fg + '</span>'
+        let fg_value = (value.target_fg / 1000).toFixed(3)
+        target_fg.innerHTML = 'Target OG: <span>' + fg_value + '</span>'
         basics_wrapper.appendChild(target_fg)
 
         let target_og = document.createElement('li')
-        target_og.innerHTML = 'Target OG: <span>' + value.target_og + '</span>'
+        let og_value = (value.target_og / 1000).toFixed(3)
+        target_og.innerHTML = 'Target OG: <span>' + og_value + '</span>'
         basics_wrapper.appendChild(target_og)
 
         let ebc = document.createElement('li')
         ebc.innerHTML = 'EBC: <span>' + value.ebc + '</span>'
         basics_wrapper.appendChild(ebc)
+
+        let ibu_basics = document.createElement('li')
+        ibu_basics.innerHTML = 'IBU: <span>' + value.ibu + '</span>'
+        basics_wrapper.appendChild(ibu_basics)
 
         let srm = document.createElement('li')
         srm.innerHTML = 'SRM: <span>' + value.srm + '</span>'
@@ -299,7 +305,9 @@ function getAllBeers(page, search_query = '') {
 
         let attenuation_level = document.createElement('li')
         attenuation_level.innerHTML =
-          'attenuation level: <span>' + value.attenuation_level + '</span>'
+          'attenuation level: <span>' +
+          Number(value.attenuation_level / 100).toFixed(2) +
+          '</span>'
         basics_wrapper.appendChild(attenuation_level)
 
         let method_wrapper = document.createElement('section')
@@ -325,8 +333,8 @@ function getAllBeers(page, search_query = '') {
         let ferm_info = document.createElement('li')
         ferm_info.innerHTML =
           value.method.fermentation.temp.value +
-          ' ' +
-          value.method.fermentation.temp.unit
+          ' &deg;' +
+          value.method.fermentation.temp.unit.charAt(0)
         fermentation.appendChild(ferm_info)
 
         let fermentation_heading = document.createElement('h4')
@@ -339,8 +347,8 @@ function getAllBeers(page, search_query = '') {
           let li = document.createElement('li')
           li.innerHTML =
             element.temp.value +
-            ' ' +
-            element.temp.unit +
+            ' &deg;' +
+            element.temp.unit.charAt(0) +
             ' ' +
             '<span>' +
             element.duration +
@@ -384,7 +392,7 @@ function getAllBeers(page, search_query = '') {
         // Add eventlistener
         card_wrapper.addEventListener('click', () => {
           let recipe_id = card_wrapper.getAttribute('beer-id')
-          generatePDF(title.innerHTML, '#recipe-' + recipe_id)
+          html2pdfCreation(title.innerHTML, '#recipe-' + recipe_id)
         })
       }
     })
@@ -417,19 +425,27 @@ function ingredients(type, wrapper) {
   })
 }
 
-function saveFavorite() {}
-
 /**
- * Display your favorites (maybe print to document pdf)
+ * HTML2PDF library for generating pdf.
+ * @param {string} title
+ * @param {string} target
  */
-function manageFavorites() {}
-
-function generatePDF(title, target) {
+function html2pdfCreation(title, target) {
   // Choose the element that our recipe is rendered in.
   const element = document.querySelector(target)
   title = title.replace('.', '-')
+
+  const opt = {
+    margin: 0.75,
+    pagebreak: {
+      mode: ['css', 'legacy'],
+    },
+    filename: title + '.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 1 },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+  }
+
   // Choose the element and save the PDF for our user.
-  html2pdf()
-    .from(element)
-    .save('Recipe for ' + title)
+  html2pdf().set(opt).from(element).save()
 }

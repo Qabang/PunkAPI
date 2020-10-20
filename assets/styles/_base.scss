@@ -3,7 +3,9 @@ html {
   font-size: 16px;
   font-weight: bold;
 }
-
+body {
+  background-color: #ffffff;
+}
 h2,
 h1 {
   font-family: $heading;
