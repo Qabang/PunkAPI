@@ -1,10 +1,36 @@
 let baseUrl = 'https://api.punkapi.com/v2/beers?'
 window.onload = () => {
   localStorage.setItem('beer-page', 1)
-  console.log('laddat')
 
+  // Populate abv selectlist
+  let abv_selectlist_gt = document.querySelector('#abv-gt')
+  let abv_selectlist_lt = document.querySelector('#abv-lt')
+  for (let i = 0; i < 68; i++) {
+    let opt = document.createElement('option')
+    let opt_lt = document.createElement('option')
+    opt.value = opt_lt.value = i
+    opt.innerHTML = opt_lt.innerHTML = i + ' %'
+
+    abv_selectlist_gt.appendChild(opt)
+    abv_selectlist_lt.appendChild(opt_lt)
+  }
+
+  let abv_gt = document.createElement('option')
+  let abv_lt = document.createElement('option')
+  abv_gt.value = abv_lt.value = 'null'
+  abv_gt.innerHTML = abv_lt.innerHTML = '-'
+  abv_lt.setAttribute('selected', '')
+  abv_gt.setAttribute('selected', '')
+  abv_selectlist_gt.prepend(abv_gt)
+  abv_selectlist_lt.prepend(abv_lt)
+
+  //Load all beers
   getAllBeers('page=' + localStorage.getItem('beer-page'))
+  document
+    .querySelector('#search-button')
+    .addEventListener('click', () => searchbox())
 
+  // Add eventlisteners to buttons.
   document.querySelector('.next-button').addEventListener('click', () => {
     localStorage.setItem(
       'beer-page',
@@ -34,12 +60,7 @@ window.onload = () => {
     let page = 'page=' + localStorage.getItem('beer-page')
     getAllBeers(page)
 
-    if (Number(localStorage.getItem('beer-page')) === 5) {
-      document.querySelector('.next-button').setAttribute('disabled', '')
-    } else {
-      document.querySelector('.next-button').removeAttribute('disabled', '')
-    }
-
+    // If we are on the first page disable previous button since there is no previous page.
     if (Number(localStorage.getItem('beer-page')) === 1) {
       document.querySelector('.prev-button').setAttribute('disabled', '')
     } else {
@@ -48,20 +69,62 @@ window.onload = () => {
   })
 }
 
-function getAllBeers(page) {
-  console.log(page)
+function searchbox() {
+  let query = ''
+  let radios = document.querySelectorAll('input[type=radio]')
+  let abv_gt = document.querySelector('#abv-gt').value
+  let abv_lt = document.querySelector('#abv-lt').value
+  if (abv_gt != 'null') {
+    query += 'abv_gt=' + abv_gt + '&'
+  }
 
-  fetch(baseUrl + page + '&per_page=80 ', {
+  if (abv_lt != 'null') {
+    query += 'abv_lt=' + abv_lt + '&'
+  }
+
+  radios.forEach((element) => {
+    if (element.checked === true) {
+      console.log(element)
+      let value = element.id
+      value = value.replace('-', '_')
+      let input = document.querySelector('#search-input').value
+      console.log(value)
+      console.log(input)
+      if (input) {
+        query += value + '=' + input
+      }
+    }
+  })
+
+  getAllBeers(localStorage.getItem('beer-page'), query)
+}
+
+function getAllBeers(page, search_query = '') {
+  console.log(baseUrl + page + '&per_page=80&' + search_query)
+  fetch(baseUrl + page + '&per_page=80&' + search_query, {
     method: 'GET',
   })
     .then((response) => response.json())
     .then((result) => {
-      console.log(result)
+      console.log(result.length)
+      //Clear existing cards before adding new.
+      let cards_array = document.querySelectorAll('.card-wrapper')
+      console.log(cards_array)
+      if (cards_array) {
+        cards_array.forEach((element) => {
+          element.parentNode.removeChild(element)
+        })
+      }
+
+      // If result length is less than 80 there is the end of the list and no more pages are available.
+      if (result.length < 80) {
+        document.querySelector('.next-button').setAttribute('disabled', '')
+      } else {
+        document.querySelector('.next-button').removeAttribute('disabled', '')
+      }
 
       const entries = Object.entries(result)
       for (const [key, value] of entries) {
-        console.log(value)
-
         let wrapper = document.querySelector('.beer-card-wrapper')
         // Create the card elements
         let card_wrapper = document.createElement('article')
@@ -111,6 +174,13 @@ function getAllBeers(page) {
         card_wrapper.appendChild(food_pairing)
         food_pairing.innerHTML =
           'Goes well with:<br><span>' + value.food_pairing + '</span>'
+
+        let download_icon = document.createElement('i')
+        let download_btn = document.createElement('button')
+        download_icon.setAttribute('class', 'fa fa-download')
+        download_btn.innerHTML = 'Download Recipe'
+        download_btn.appendChild(download_icon)
+        card_wrapper.appendChild(download_btn)
 
         // Create recipie
         let recipe = document.createElement('article')
@@ -321,6 +391,10 @@ function getAllBeers(page) {
 }
 
 function ingredients(type, wrapper) {
+  if (type === null) {
+    return
+  }
+
   type.forEach((element) => {
     const items = Object.entries(element)
     let li = document.createElement('li')
@@ -353,7 +427,7 @@ function manageFavorites() {}
 function generatePDF(title, target) {
   // Choose the element that our recipe is rendered in.
   const element = document.querySelector(target)
-
+  title = title.replace('.', '-')
   // Choose the element and save the PDF for our user.
   html2pdf()
     .from(element)

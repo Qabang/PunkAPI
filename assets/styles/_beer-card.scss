@@ -1,6 +1,7 @@
 .beer-card-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   .card-wrapper {
     max-width: 300px;
@@ -9,6 +10,27 @@
     box-shadow: $box-shadow;
     padding: 15px;
     border-radius: 10px;
+
+    &:hover {
+      box-shadow: 2px 2px 14px $yellow;
+      cursor: pointer;
+    }
+    button {
+      margin-left: 50%;
+      width: 100%;
+      text-align: center;
+      transform: translateX(-50%);
+      padding: 10px;
+      background-color: $blue;
+      border-radius: 5px;
+      box-shadow: 2px 2px 2px #ccc;
+      color: $white;
+
+      i {
+        margin: 0 10px;
+        font-size: 16px;
+      }
+    }
 
     h2,
     .tagline,
@@ -94,7 +116,7 @@
       .yeast {
         display: flex;
         justify-content: space-between;
-        border-bottom: 1px solid $yellow;
+        border-bottom: $border;
         padding: 0 10px;
         margin: 5px;
 
@@ -113,7 +135,7 @@
         }
 
         span {
-          border-bottom: 1px solid $yellow;
+          border-bottom: $border;
         }
         span:first-child,
         span:nth-child(3) {
@@ -141,7 +163,7 @@
         font-variant: small-caps;
         font-size: 20px;
         font-family: $text-bold;
-        border-bottom: 1px solid $yellow;
+        border-bottom: $border;
 
         span {
           flex-basis: 45%;
@@ -173,7 +195,7 @@
 
       .underlined {
         width: 25%;
-        border-bottom: 1px solid $yellow;
+        border-bottom: $border;
       }
     }
   }

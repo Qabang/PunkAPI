@@ -7,23 +7,25 @@ $white: #eae2b7;
 
 /* ### Fonts ### */
 @font-face {
-  font-family: "Quicksand regular";
-  src: url(../fonts/Quicksand-Regular.ttf) format("truetype");
+  font-family: 'Quicksand regular';
+  src: url(../fonts/Quicksand-Regular.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: "Quicksand bold";
-  src: url(../fonts/Quicksand-Bold.ttf) format("truetype");
+  font-family: 'Quicksand bold';
+  src: url(../fonts/Quicksand-Bold.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: "Alfa Slab One";
-  src: url(../fonts/AlfaSlabOne-Regular.ttf) format("truetype");
+  font-family: 'Alfa Slab One';
+  src: url(../fonts/AlfaSlabOne-Regular.ttf) format('truetype');
 }
 
-$heading: "Alfa Slab One", serif;
-$text: "Quicksand regular", sans-serif;
-$text-bold: "Quicksand bold", sans-serif;
+$heading: 'Alfa Slab One', serif;
+$text: 'Quicksand regular', sans-serif;
+$text-bold: 'Quicksand bold', sans-serif;
 
 /* ### Misc ### */
 $box-shadow: 4px 4px 10px rgb(160, 147, 147);
+$border-bold: 2px solid $yellow;
+$border: 1px solid $yellow;

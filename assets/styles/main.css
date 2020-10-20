@@ -1,17 +1,17 @@
 /* ###   Colors   ### */
 /* ### Fonts ### */
 @font-face {
-  font-family: "Quicksand regular";
+  font-family: 'Quicksand regular';
   src: url(../fonts/Quicksand-Regular.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: "Quicksand bold";
+  font-family: 'Quicksand bold';
   src: url(../fonts/Quicksand-Bold.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: "Alfa Slab One";
+  font-family: 'Alfa Slab One';
   src: url(../fonts/AlfaSlabOne-Regular.ttf) format("truetype");
 }
 
@@ -22,9 +22,44 @@ html {
   font-weight: bold;
 }
 
-h2 {
+h2,
+h1 {
   font-family: "Alfa Slab One", serif;
   font-weight: lighter;
+}
+
+h1 {
+  text-align: center;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.pagination input {
+  background: #003049;
+  color: #eae2b7;
+  font-size: 20px;
+  font-family: "Quicksand bold", sans-serif;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.pagination input:hover:not(:disabled), .pagination input:focus {
+  background: #f77f00;
+  color: #000;
+}
+
+.pagination input:disabled {
+  background: #eae2b7;
+  color: #cdba54;
+  opacity: 0.6;
 }
 
 .beer-card-wrapper {
@@ -33,6 +68,9 @@ h2 {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .beer-card-wrapper .card-wrapper {
@@ -44,6 +82,31 @@ h2 {
           box-shadow: 4px 4px 10px #a09393;
   padding: 15px;
   border-radius: 10px;
+}
+
+.beer-card-wrapper .card-wrapper:hover {
+  -webkit-box-shadow: 2px 2px 14px #fcbf49;
+          box-shadow: 2px 2px 14px #fcbf49;
+  cursor: pointer;
+}
+
+.beer-card-wrapper .card-wrapper button {
+  margin-left: 50%;
+  width: 100%;
+  text-align: center;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: 10px;
+  background-color: #003049;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 2px #ccc;
+          box-shadow: 2px 2px 2px #ccc;
+  color: #eae2b7;
+}
+
+.beer-card-wrapper .card-wrapper button i {
+  margin: 0 10px;
+  font-size: 16px;
 }
 
 .beer-card-wrapper .card-wrapper h2,
@@ -258,5 +321,155 @@ h2 {
   background-size: 170%;
   margin-bottom: -10px;
   margin-top: 10px;
+}
+
+.search-box {
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+  width: 90%;
+  margin: auto;
+}
+
+.search-box h2 {
+  color: #003049;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.search-box form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 2px #fcbf49 solid;
+  padding: 20px;
+}
+
+.search-box form label {
+  -ms-flex-preferred-size: 9%;
+      flex-basis: 9%;
+  position: relative;
+  display: block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+.search-box form label input[type='radio'] {
+  padding: 5px;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.search-box form label input[type='radio']:checked ~ .checkbox {
+  border-color: #f4a304;
+  background-color: #fcbf49;
+}
+
+.search-box form label input[type='radio']:checked ~ .checkbox:focus {
+  background-color: #f77f00;
+}
+
+.search-box form label input[type='radio']:checked ~ .checkbox:after {
+  display: block;
+}
+
+.search-box form label .checkbox {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 26px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  border: 2px solid #fcbf49;
+  -webkit-box-shadow: 2px 2px 2px #cccccc;
+          box-shadow: 2px 2px 2px #cccccc;
+  white-space: nowrap;
+  min-width: 115px;
+}
+
+.search-box form label .checkbox:hover, .search-box form label .checkbox:focus {
+  -webkit-box-shadow: 2px 2px 2px #999999;
+          box-shadow: 2px 2px 2px #999999;
+  background: #f77f00;
+}
+
+.search-box form input[type='text'] {
+  -ms-flex-preferred-size: 90%;
+      flex-basis: 90%;
+  max-width: 40%;
+  font-size: 20px;
+  padding: 5px 10px;
+  margin: 50px 0 10px 10px;
+  margin-right: 0;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid black;
+}
+
+.search-box form #search-button {
+  border: 1px solid black;
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+  background: #003049;
+  color: #fff;
+  font-size: 20px;
+  font-family: "Quicksand bold", sans-serif;
+  padding: 5px 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0 5px 5px 0;
+  margin: 50px 10px 10px 0;
+  max-width: 120px;
+  -webkit-box-shadow: 2px 2px 2px #ccc;
+          box-shadow: 2px 2px 2px #ccc;
+}
+
+.search-box form #search-button:hover:not(:disabled), .search-box form #search-button:focus {
+  background: #f77f00;
+  color: #000;
+}
+
+.search-box label {
+  margin: 20px;
+}
+
+.search-box .select-wrap {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0 25%;
+}
+
+.search-box .select-wrap label {
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+  white-space: nowrap;
+}
+
+.search-box .select-wrap select {
+  margin: 0 15px;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.search-box .select-wrap select option {
+  font-size: 16px;
+  padding: 10px;
 }
 /*# sourceMappingURL=main.css.map */
