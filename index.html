@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Punk</title>
     <link rel="stylesheet" href="assets/styles/main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <header>
@@ -13,31 +16,28 @@
     </header>
     <section class="search-box">
       <h2>Search by:</h2>
-
-      <form onsubmit="event.preventDefault(); searchBox()"">
+      <form id="search-form">
         <label>
           <input type="radio" checked name="search-filter" id="beer-name" />
-          
-        <span role="checkbox" tabindex="1" class="checkbox">Name</span>
+          <span role="checkbox" tabindex="1" class="checkbox">Name</span>
         </label>
         <label>
           <input type="radio" name="search-filter" id="malt" />
-          
-        <span role="checkbox" tabindex="2" class="checkbox">Malt</span>
+          <span role="checkbox" tabindex="2" class="checkbox">Malt</span>
         </label>
         <label>
           <input type="radio" name="search-filter" id="hops" />
-          
-        <span role="checkbox" tabindex="3" class="checkbox">Hops</span>
+          <span role="checkbox" tabindex="3" class="checkbox">Hops</span>
         </label>
         <label>
           <input type="radio" name="search-filter" id="yeast" />
-          
-        <span role="checkbox" tabindex="4" class="checkbox">Yeast</span>
+          <span role="checkbox" tabindex="4" class="checkbox">Yeast</span>
         </label>
         <label>
           <input type="radio" name="search-filter" id="food" />
-        <span role="checkbox" tabindex="5" class="checkbox">Food pairing</span>
+          <span role="checkbox" tabindex="5" class="checkbox"
+            >Food pairing</span
+          >
         </label>
         <input type="text" name="search" id="search-input" />
         <input type="button" id="search-button" value="Search" />
@@ -56,6 +56,11 @@
       <input type="submit" value="Previous page" class="prev-button" disabled />
       <input type="submit" value="Next page" class="next-button" />
     </section>
+
+    <div id="back-to-top">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+    </div>
+
     <script src="assets/scripts/html2pdf.bundle.js"></script>
     <script src="assets/scripts/main.js"></script>
   </body>

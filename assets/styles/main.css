@@ -66,6 +66,37 @@ h1 {
   opacity: 0.6;
 }
 
+#back-to-top {
+  width: 80px;
+  height: 0;
+  text-align: center;
+  background-color: #003049;
+  -webkit-box-shadow: 2px 2px 5px #ccc;
+          box-shadow: 2px 2px 5px #ccc;
+  position: fixed;
+  bottom: -20px;
+  right: 20px;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#back-to-top:hover {
+  background-color: #f0eacb;
+}
+
+#back-to-top:hover i {
+  color: #003049;
+}
+
+#back-to-top i {
+  font-size: 60px;
+  color: #eae2b7;
+}
+
 .beer-card-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -94,6 +125,11 @@ h1 {
   cursor: pointer;
 }
 
+.beer-card-wrapper .card-wrapper:hover button {
+  background: #f77f00;
+  color: #000;
+}
+
 .beer-card-wrapper .card-wrapper button {
   margin-left: 50%;
   width: 100%;
@@ -106,6 +142,7 @@ h1 {
   -webkit-box-shadow: 2px 2px 2px #ccc;
           box-shadow: 2px 2px 2px #ccc;
   color: #eae2b7;
+  font-family: "Quicksand bold", sans-serif;
 }
 
 .beer-card-wrapper .card-wrapper button i {

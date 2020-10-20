@@ -1,4 +1,27 @@
 let baseUrl = 'https://api.punkapi.com/v2/beers?'
+
+document
+  .querySelector('#search-button')
+  .addEventListener('click', (e) => searchbox(e))
+
+document
+  .querySelector('#search-form')
+  .addEventListener('submit', (e) => searchbox(e))
+
+document.querySelector('#back-to-top').addEventListener('click', () => {
+  // scroll to top
+  window.scroll({
+    top: 100,
+    left: 100,
+    behavior: 'smooth',
+  })
+})
+
+window.addEventListener('scroll', () => {
+  handleScroll()
+})
+
+// Wait for window to load before running to prevent errors.
 window.onload = () => {
   localStorage.setItem('beer-page', 1)
 
@@ -26,9 +49,6 @@ window.onload = () => {
 
   //Load all beers
   getAllBeers('page=' + localStorage.getItem('beer-page'))
-  document
-    .querySelector('#search-button')
-    .addEventListener('click', () => searchbox())
 
   // Add eventlisteners to buttons.
   document.querySelector('.next-button').addEventListener('click', () => {
@@ -68,8 +88,23 @@ window.onload = () => {
     }
   })
 }
+/**
+ * Function that handles visibility of back to top button depending on scroll level.
+ */
+function handleScroll() {
+  let back_to_top = document.querySelector('#back-to-top')
+  // Ff scroll is 500px down show back to top button else we hide it.
+  if (window.pageYOffset > 500) {
+    back_to_top.style.height = '80px'
+    back_to_top.style.bottom = '0'
+  } else {
+    back_to_top.style.height = '0'
+    back_to_top.style.bottom = '-20px'
+  }
+}
 
-function searchbox() {
+function searchbox(e) {
+  e.preventDefault()
   let query = ''
   let radios = document.querySelectorAll('input[type=radio]')
   let abv_gt = document.querySelector('#abv-gt').value
@@ -84,12 +119,10 @@ function searchbox() {
 
   radios.forEach((element) => {
     if (element.checked === true) {
-      console.log(element)
       let value = element.id
       value = value.replace('-', '_')
       let input = document.querySelector('#search-input').value
-      console.log(value)
-      console.log(input)
+
       if (input) {
         query += value + '=' + input
       }
@@ -99,17 +132,19 @@ function searchbox() {
   getAllBeers(localStorage.getItem('beer-page'), query)
 }
 
+/**
+ * Function that makes a GET request based on the search query string.
+ * @param {string} page
+ * @param {string} search_query
+ */
 function getAllBeers(page, search_query = '') {
-  console.log(baseUrl + page + '&per_page=80&' + search_query)
   fetch(baseUrl + page + '&per_page=80&' + search_query, {
     method: 'GET',
   })
     .then((response) => response.json())
     .then((result) => {
-      console.log(result.length)
       //Clear existing cards before adding new.
       let cards_array = document.querySelectorAll('.card-wrapper')
-      console.log(cards_array)
       if (cards_array) {
         cards_array.forEach((element) => {
           element.parentNode.removeChild(element)

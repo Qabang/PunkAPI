@@ -42,3 +42,31 @@ h1 {
     }
   }
 }
+
+#back-to-top {
+  width: 80px;
+  height: 0;
+  text-align: center;
+  background-color: $blue;
+  box-shadow: 2px 2px 5px #ccc;
+  position: fixed;
+  bottom: -20px;
+  right: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($white, 5%);
+
+    i {
+      color: $blue;
+    }
+  }
+
+  i {
+    font-size: 60px;
+    color: $white;
+  }
+}
