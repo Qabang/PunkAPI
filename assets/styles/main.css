@@ -534,4 +534,157 @@ h1 {
   font-size: 16px;
   padding: 10px;
 }
+
+#add-city {
+  padding: 20px;
+}
+
+#add-city form {
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border: 2px solid #003049;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  max-width: 860px;
+  margin: auto;
+}
+
+#add-city form h2 {
+  text-align: center;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+#add-city form input[type='text'],
+#add-city form input[type='number'],
+#add-city form label {
+  width: 45%;
+  padding: 5px;
+  margin: 0 10px;
+}
+
+#add-city form input[type='submit'] {
+  border: 1px solid black;
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+  background: #003049;
+  color: #fff;
+  font-size: 20px;
+  font-family: "Quicksand bold", sans-serif;
+  padding: 10px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  margin: 30px 35px;
+  margin-right: 88%;
+  max-width: 120px;
+  -webkit-box-shadow: 2px 2px 2px #ccc;
+          box-shadow: 2px 2px 2px #ccc;
+}
+
+#add-city form input[type='submit']:hover {
+  background: #f77f00;
+  color: #000;
+}
+
+#add-city form .error {
+  border: 3px solid #d62828;
+  border-radius: 4px;
+}
+
+#add-city form .error ~ #msg {
+  display: inline-block;
+  margin: auto;
+  background: #d62828;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+#add-city form .error ~ #msg p {
+  color: #fff;
+}
+
+#add-city form #msg {
+  color: green;
+}
+
+#cities-wrapper .change,
+#cities-wrapper .delete {
+  padding: 10px;
+  font-family: "Quicksand bold", sans-serif;
+  font-size: 16px;
+  margin: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#cities-wrapper .delete {
+  background-color: #d62828;
+  color: white;
+}
+
+#cities-wrapper .delete:hover {
+  background: #ab2020;
+}
+
+#cities-wrapper .change {
+  background-color: #fcbf49;
+}
+
+#cities-wrapper .change:hover {
+  background: #fbad17;
+}
+
+#cities-wrapper .in-change {
+  background: #fee2ad;
+  padding: 20px;
+}
+
+#cities-wrapper div {
+  text-align: center;
+  border-bottom: 2px solid #003049;
+  margin: auto;
+  position: relative;
+  width: 75%;
+  max-width: 860px;
+}
+
+#cities-wrapper div .id {
+  position: absolute;
+  top: -12px;
+  right: 10px;
+  color: gray;
+  font-size: 12px;
+}
+
+#cities-wrapper div label,
+#cities-wrapper div .save {
+  display: block;
+  margin: auto;
+}
+
+#cities-wrapper div .save {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #003049;
+  color: #fff;
+  margin: 20px auto;
+  font-family: "Quicksand bold", sans-serif;
+  font-size: 16px;
+}
+
+#cities-wrapper div input[type='text'],
+#cities-wrapper div input[type='number'] {
+  width: 50%;
+  padding: 10px;
+  margin: 10px;
+}
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,145 @@
+#add-city {
+  padding: 20px;
+
+  form {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    max-width: 860px;
+    margin: auto;
+
+    h2 {
+      text-align: center;
+      flex-basis: 100%;
+    }
+
+    input[type='text'],
+    input[type='number'],
+    label {
+      width: 45%;
+      padding: 5px;
+      margin: 0 10px;
+    }
+
+    input[type='submit'] {
+      border: 1px solid black;
+      flex-basis: 10%;
+      background: $blue;
+      color: #fff;
+      font-size: 20px;
+      font-family: $text-bold;
+      padding: 10px 10px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      margin: 30px 35px;
+      margin-right: 88%;
+      max-width: 120px;
+      box-shadow: 2px 2px 2px #ccc;
+
+      &:hover {
+        background: $orange;
+        color: #000;
+      }
+    }
+
+    .error {
+      border: 3px solid $red;
+      border-radius: 4px;
+
+      & ~ #msg {
+        display: inline-block;
+        margin: auto;
+        background: $red;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+
+        p {
+          color: #fff;
+        }
+      }
+    }
+
+    #msg {
+      color: green;
+    }
+  }
+}
+
+#cities-wrapper {
+  .change,
+  .delete {
+    padding: 10px;
+    font-family: $text-bold;
+    font-size: 16px;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .delete {
+    background-color: $red;
+    color: white;
+
+    &:hover {
+      background: darken($red, 10%);
+    }
+  }
+
+  .change {
+    background-color: $yellow;
+
+    &:hover {
+      background: darken($yellow, 10%);
+    }
+  }
+
+  .in-change {
+    background: lighten($yellow, 20%);
+    padding: 20px;
+  }
+
+  div {
+    text-align: center;
+    border-bottom: 2px solid $blue;
+    margin: auto;
+    position: relative;
+    width: 75%;
+    max-width: 860px;
+
+    .id {
+      position: absolute;
+      top: -12px;
+      right: 10px;
+      color: gray;
+      font-size: 12px;
+    }
+
+    label,
+    .save {
+      // width: 100%;
+      display: block;
+      margin: auto;
+    }
+
+    .save {
+      padding: 10px;
+      border-radius: 5px;
+      background-color: $blue;
+      color: #fff;
+      margin: 20px auto;
+      font-family: $text-bold;
+      font-size: 16px;
+    }
+
+    input[type='text'],
+    input[type='number'] {
+      width: 50%;
+      padding: 10px;
+      margin: 10px;
+    }
+  }
+}

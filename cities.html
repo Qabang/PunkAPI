@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/styles/main.css" />
+  </head>
+  <body>
+    <section id="add-city">
+      <form id="add-city-form">
+        <h2>Lägg till ny Stad</h2>
+        <label for="city-name">Namn:</label>
+        <label for="city-population">Population: </label>
+        <input type="text" name="Name" id="city-name" />
+        <input type="number" name="Population" id="city-population" />
+        <input type="submit" value="Lägg till" />
+        <div id="msg"></div>
+      </form>
+    </section>
+    <section id="cities-wrapper"></section>
+    <script src="assets/scripts/cities.js"></script>
+  </body>
+</html>
