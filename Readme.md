@@ -14,5 +14,5 @@ All scss files are imported in main.scss and Live sass compiler (VS code plugin)
 
 ## Libraries
 
-[Chart.js](https://www.chartjs.org/)
-[HTML2PDF](https://github.com/spipu/html2pdf)
+- [Chart.js](https://www.chartjs.org/)
+- [HTML2PDF](https://github.com/spipu/html2pdf)
