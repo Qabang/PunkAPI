@@ -357,7 +357,7 @@ function getAllBeers(page, search_query = '') {
 
         let target_fg = document.createElement('li')
         let fg_value = (value.target_fg / 1000).toFixed(3)
-        target_fg.innerHTML = 'Target OG: <span>' + fg_value + '</span>'
+        target_fg.innerHTML = 'Target FG: <span>' + fg_value + '</span>'
         basics_wrapper.appendChild(target_fg)
 
         let target_og = document.createElement('li')
@@ -365,20 +365,20 @@ function getAllBeers(page, search_query = '') {
         target_og.innerHTML = 'Target OG: <span>' + og_value + '</span>'
         basics_wrapper.appendChild(target_og)
 
-        let ebc = document.createElement('li')
-        ebc.innerHTML = 'EBC: <span>' + value.ebc + '</span>'
-        basics_wrapper.appendChild(ebc)
-
         let ibu_basics = document.createElement('li')
         ibu_basics.innerHTML = 'IBU: <span>' + value.ibu + '</span>'
         basics_wrapper.appendChild(ibu_basics)
+
+        let ebc = document.createElement('li')
+        ebc.innerHTML = 'EBC: <span>' + value.ebc + '</span>'
+        basics_wrapper.appendChild(ebc)
 
         let srm = document.createElement('li')
         srm.innerHTML = 'SRM: <span>' + value.srm + '</span>'
         basics_wrapper.appendChild(srm)
 
         let ph = document.createElement('li')
-        ph.innerHTML = 'PH: <span>' + value.ph + '</span>'
+        ph.innerHTML = 'pH: <span>' + value.ph + '</span>'
         basics_wrapper.appendChild(ph)
 
         let attenuation_level = document.createElement('li')
@@ -406,19 +406,6 @@ function getAllBeers(page, search_query = '') {
         time_temp_title.innerHTML = '<span>Temp</span><span>Time</span>'
         method_wrapper.appendChild(time_temp_title)
 
-        let fermentation = document.createElement('ul')
-        method_wrapper.appendChild(fermentation)
-        let ferm_info = document.createElement('li')
-        ferm_info.innerHTML =
-          value.method.fermentation.temp.value +
-          ' &deg;' +
-          value.method.fermentation.temp.unit.charAt(0)
-        fermentation.appendChild(ferm_info)
-
-        let fermentation_heading = document.createElement('h4')
-        fermentation_heading.innerHTML = 'Fermentation'
-        fermentation.prepend(fermentation_heading)
-
         let mash = document.createElement('ul')
         method_wrapper.appendChild(mash)
         value.method.mash_temp.forEach((element) => {
@@ -437,6 +424,19 @@ function getAllBeers(page, search_query = '') {
         let mash_heading = document.createElement('h4')
         mash_heading.innerHTML = 'Mash temp'
         mash.prepend(mash_heading)
+
+        let fermentation = document.createElement('ul')
+        method_wrapper.appendChild(fermentation)
+        let ferm_info = document.createElement('li')
+        ferm_info.innerHTML =
+          value.method.fermentation.temp.value +
+          ' &deg;' +
+          value.method.fermentation.temp.unit.charAt(0)
+        fermentation.appendChild(ferm_info)
+
+        let fermentation_heading = document.createElement('h4')
+        fermentation_heading.innerHTML = 'Fermentation'
+        fermentation.prepend(fermentation_heading)
 
         let twist = document.createElement('p')
         method_wrapper.appendChild(twist)
