@@ -97,6 +97,41 @@ h1 {
   color: #eae2b7;
 }
 
+/* Animated spinner from W3schools */
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #fcbf49;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 .beer-card-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -119,13 +154,13 @@ h1 {
   border-radius: 10px;
 }
 
-.beer-card-wrapper .card-wrapper:hover {
+.beer-card-wrapper .card-wrapper:hover, .beer-card-wrapper .card-wrapper:focus {
   -webkit-box-shadow: 2px 2px 14px #fcbf49;
           box-shadow: 2px 2px 14px #fcbf49;
   cursor: pointer;
 }
 
-.beer-card-wrapper .card-wrapper:hover button {
+.beer-card-wrapper .card-wrapper:hover button, .beer-card-wrapper .card-wrapper:focus button {
   background: #f77f00;
   color: #000;
 }
@@ -143,6 +178,12 @@ h1 {
           box-shadow: 2px 2px 2px #ccc;
   color: #eae2b7;
   font-family: "Quicksand bold", sans-serif;
+  cursor: pointer;
+}
+
+.beer-card-wrapper .card-wrapper button:focus {
+  background: #f77f00;
+  color: #000;
 }
 
 .beer-card-wrapper .card-wrapper button i {
@@ -528,6 +569,10 @@ h1 {
   font-size: 16px;
   padding: 5px 10px;
   border-radius: 3px;
+}
+
+.search-box .select-wrap select:focus {
+  outline-color: #f77f00;
 }
 
 .search-box .select-wrap select option {

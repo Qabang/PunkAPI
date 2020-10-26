@@ -80,6 +80,7 @@
     cursor: pointer;
     border-radius: 5px;
   }
+
   .delete {
     background-color: $red;
     color: white;
@@ -120,7 +121,6 @@
 
     label,
     .save {
-      // width: 100%;
       display: block;
       margin: auto;
     }

@@ -19,23 +19,51 @@
       <form id="search-form">
         <label>
           <input type="radio" checked name="search-filter" id="beer-name" />
-          <span role="checkbox" tabindex="1" class="checkbox">Name</span>
+          <span
+            role="checkbox"
+            aria-checked="true"
+            tabindex="0"
+            class="checkbox"
+            >Name</span
+          >
         </label>
         <label>
           <input type="radio" name="search-filter" id="malt" />
-          <span role="checkbox" tabindex="2" class="checkbox">Malt</span>
+          <span
+            role="checkbox"
+            aria-checked="false"
+            tabindex="0"
+            class="checkbox"
+            >Malt</span
+          >
         </label>
         <label>
           <input type="radio" name="search-filter" id="hops" />
-          <span role="checkbox" tabindex="3" class="checkbox">Hops</span>
+          <span
+            role="checkbox"
+            aria-checked="false"
+            tabindex="0"
+            class="checkbox"
+            >Hops</span
+          >
         </label>
         <label>
           <input type="radio" name="search-filter" id="yeast" />
-          <span role="checkbox" tabindex="4" class="checkbox">Yeast</span>
+          <span
+            role="checkbox"
+            aria-checked="false"
+            tabindex="0"
+            class="checkbox"
+            >Yeast</span
+          >
         </label>
         <label>
           <input type="radio" name="search-filter" id="food" />
-          <span role="checkbox" tabindex="5" class="checkbox"
+          <span
+            role="checkbox"
+            aria-checked="false"
+            tabindex="0"
+            class="checkbox"
             >Food pairing</span
           >
         </label>
@@ -51,6 +79,7 @@
         </div>
       </form>
     </section>
+    <div class="loader"></div>
     <section class="beer-card-wrapper"></section>
     <section class="pagination">
       <input type="submit" value="Previous page" class="prev-button" disabled />

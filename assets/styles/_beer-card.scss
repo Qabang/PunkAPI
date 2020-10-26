@@ -11,7 +11,8 @@
     padding: 15px;
     border-radius: 10px;
 
-    &:hover {
+    &:hover,
+    &:focus {
       box-shadow: 2px 2px 14px $yellow;
       cursor: pointer;
 
@@ -32,6 +33,12 @@
       box-shadow: 2px 2px 2px #ccc;
       color: $white;
       font-family: $text-bold;
+      cursor: pointer;
+
+      &:focus {
+        background: $orange;
+        color: #000;
+      }
 
       i {
         margin: 0 10px;
@@ -121,6 +128,7 @@
       ul {
         padding: 0;
       }
+
       li,
       .yeast {
         display: flex;
@@ -132,6 +140,7 @@
         span:first-child {
           width: 55%;
         }
+
         span {
           width: 45%;
         }
@@ -147,6 +156,7 @@
           border-bottom: $border;
           flex-basis: 47%;
         }
+
         span:first-child,
         span:nth-child(3) {
           flex-basis: 53%;
@@ -160,9 +170,11 @@
 
     .recipe-basics {
       break-before: left;
+
       .recipe-icon {
         margin-bottom: 6px;
       }
+
       span {
         max-width: 30%;
       }
@@ -170,6 +182,7 @@
 
     .recipe-method {
       break-before: left;
+
       div:not(.recipe-icon) {
         display: flex;
         padding: 10px;
@@ -199,6 +212,7 @@
         padding: 5px 10px;
       }
     }
+
     .recipe-tip {
       text-transform: none;
     }

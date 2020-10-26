@@ -121,6 +121,10 @@
       padding: 5px 10px;
       border-radius: 3px;
 
+      &:focus {
+        outline-color: $orange;
+      }
+
       option {
         font-size: 16px;
         padding: 10px;

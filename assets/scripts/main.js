@@ -1,5 +1,6 @@
 let baseUrl = 'https://api.punkapi.com/v2/beers?'
 
+// Adding eventlisteners.
 document
   .querySelector('#search-button')
   .addEventListener('click', (e) => searchbox(e))
@@ -20,6 +21,39 @@ document.querySelector('#back-to-top').addEventListener('click', () => {
 window.addEventListener('scroll', () => {
   handleScroll()
 })
+
+// The custom checkboxes needs special care to be accessible.
+let checkboxes = document.querySelectorAll('.checkbox')
+checkboxes.forEach((element) => {
+  element.addEventListener('click', () => {
+    handleAriaChecked()
+    element.setAttribute('aria-checked', 'true')
+  })
+
+  element.addEventListener('keyup', (e) => {
+    console.log(e.keyCode)
+    // If enter or spacebar is triggered while the custom checkbox is in focus.
+    if (e.keyCode === 32 || e.keyCode === 13) {
+      console.log('inside')
+      let input_checkbox = element.parentNode.querySelector('input')
+      handleAriaChecked()
+      element.setAttribute('aria-checked', 'true')
+      input_checkbox.setAttribute('checked', '')
+    }
+  })
+})
+
+/**
+ * Function that handles if the custom checkbox is checked or not.
+ */
+function handleAriaChecked() {
+  checkboxes.forEach((element) => {
+    if (element.getAttribute('aria-checked') === 'true') {
+      element.setAttribute('aria-checked', 'false')
+      element.parentNode.querySelector('input').removeAttribute('checked')
+    }
+  })
+}
 
 // Wait for window to load before running to prevent errors.
 window.onload = () => {
@@ -88,12 +122,14 @@ window.onload = () => {
     }
   })
 }
+
 /**
  * Function that handles visibility of back to top button depending on scroll level.
  */
 function handleScroll() {
   let back_to_top = document.querySelector('#back-to-top')
-  // Ff scroll is 500px down show back to top button else we hide it.
+
+  // If scroll is 500px down show back to top button else hide it.
   if (window.pageYOffset > 500) {
     back_to_top.style.height = '80px'
     back_to_top.style.bottom = '0'
@@ -103,7 +139,12 @@ function handleScroll() {
   }
 }
 
+/**
+ * Functions that creates the querystring for the api from the search-form values
+ * @param {event} e
+ */
 function searchbox(e) {
+  document.querySelector('.loader').style.display = 'block'
   e.preventDefault()
   let query = ''
   let radios = document.querySelectorAll('input[type=radio]')
@@ -143,6 +184,9 @@ function getAllBeers(page, search_query = '') {
   })
     .then((response) => response.json())
     .then((result) => {
+      // Hide spinner.
+      document.querySelector('.loader').style.display = 'none'
+
       //Clear existing cards before adding new.
       let cards_array = document.querySelectorAll('.card-wrapper')
       if (cards_array) {
@@ -161,6 +205,7 @@ function getAllBeers(page, search_query = '') {
       const entries = Object.entries(result)
       for (const [key, value] of entries) {
         let wrapper = document.querySelector('.beer-card-wrapper')
+
         // Create the card elements
         let card_wrapper = document.createElement('article')
         card_wrapper.setAttribute('class', 'card-wrapper')
@@ -397,6 +442,7 @@ function getAllBeers(page, search_query = '') {
 
         let twist = document.createElement('p')
         method_wrapper.appendChild(twist)
+
         if (value.method.twist != null) {
           twist.innerHTML = 'Twist: ' + value.method.twist
         }
@@ -424,7 +470,7 @@ function getAllBeers(page, search_query = '') {
         notes.innerHTML = '<span class="underlined"> Brew date:</span>'
         recipe.appendChild(notes)
 
-        // Add eventlistener
+        // Add eventlistener.
         card_wrapper.addEventListener('click', () => {
           let recipe_id = card_wrapper.getAttribute('beer-id')
           html2pdfCreation(title.innerHTML, '#recipe-' + recipe_id)
@@ -434,6 +480,7 @@ function getAllBeers(page, search_query = '') {
 }
 
 function ingredients(type, wrapper) {
+  // If no type something went wrong. Abort!
   if (type === null) {
     return
   }
