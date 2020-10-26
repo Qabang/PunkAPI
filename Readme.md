@@ -2,10 +2,10 @@
 
 ## Get started
 
-Download project and just open the html files in your browser.
-**index.html** - Brewdog's [Punk API](https://punkapi.com/), _Brewdog's beers and recipes_
-**charts.html** - Display a chart of the ABV in the beers from Brewdog. _making use of the js library chart.js_
-**cities.html** - Cities data from [Avancera](https://avancera.app/cities/), _Avancera is the platform we use during our courses at It-högskolan_
+Download project and just open the html files in your browser.  
+**index.html** - Brewdog's [Punk API](https://punkapi.com/), _Brewdog's beers and recipes_  
+**charts.html** - Display a chart of the ABV in the beers from Brewdog. _making use of the js library chart.js_  
+**cities.html** - Cities data from [Avancera](https://avancera.app/cities/), _Avancera is the platform we use during our courses at It-högskolan_  
 
 ## Styling
 
