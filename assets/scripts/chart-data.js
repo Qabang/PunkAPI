@@ -1,10 +1,13 @@
 window.onload = () => {
   storeData()
-  // chartData()
 }
 
+/**
+ * Get Beer data from API.
+ * @param {string} page
+ * @param {object} data
+ */
 async function getBeers(page, data = []) {
-  console.log(page, data)
   return fetch(
     'https://api.punkapi.com/v2/beers?page=' + page + '&per_page=80',
     {
@@ -13,30 +16,31 @@ async function getBeers(page, data = []) {
   )
     .then((response) => response.json())
     .then((result) => {
-      console.log(result)
-      // sessionStorage.setItem('beer-data', JSON.stringify(result))
-      console.log(data)
       data.push(result)
       return { amount: result.length, data: data }
     })
 }
 
+/**
+ * function that handles and stores the data in session storage.
+ */
 async function storeData() {
   // Only get new data if new session
   if (!sessionStorage.getItem('beer-data')) {
     let data = []
     let i = 1
 
+    // We get the data based on 80 results per page,
+    // and if there is less than 80 we have reached the last page of data.
     do {
       data = await getBeers(i++, data.data)
-      console.log(data)
     } while (data.amount === 80)
 
     sessionStorage.setItem('beer-data', JSON.stringify(data.data))
   }
 
   let beers = JSON.parse(sessionStorage.getItem('beer-data'))
-  console.log(beers.length)
+
   let abv = []
   let abv_labels = []
 
@@ -69,8 +73,6 @@ async function storeData() {
  * Function that uses chartjs library to fill diagram with data
  */
 function chartData(labels, data) {
-  console.log(labels.length)
-
   let element = document.getElementById('myChart')
 
   var ctx = element.getContext('2d')
@@ -116,6 +118,11 @@ function chartData(labels, data) {
               stepSize: 2,
               fontSize: 16,
             },
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Amount',
+            },
           },
         ],
         yAxes: [
@@ -127,7 +134,11 @@ function chartData(labels, data) {
               },
             },
             barThickness: 16,
-            label: '%',
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Strength',
+            },
           },
         ],
       },

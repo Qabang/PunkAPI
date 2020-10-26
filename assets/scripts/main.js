@@ -10,7 +10,7 @@ document
   .addEventListener('submit', (e) => searchbox(e))
 
 document.querySelector('#back-to-top').addEventListener('click', () => {
-  // scroll to top
+  // Scroll to top.
   window.scroll({
     top: 100,
     left: 100,
@@ -31,10 +31,8 @@ checkboxes.forEach((element) => {
   })
 
   element.addEventListener('keyup', (e) => {
-    console.log(e.keyCode)
     // If enter or spacebar is triggered while the custom checkbox is in focus.
     if (e.keyCode === 32 || e.keyCode === 13) {
-      console.log('inside')
       let input_checkbox = element.parentNode.querySelector('input')
       handleAriaChecked()
       element.setAttribute('aria-checked', 'true')

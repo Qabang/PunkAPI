@@ -19,7 +19,6 @@ function getCities() {
     cities_wrapper.textContent = ''
 
     for (let i = 0; i < cities_wrapper.children.length; i++) {
-      console.log(cities_wrapper)
       cities_wrapper.removeChild(cities_wrapper.lastElementChild)
     }
   }
@@ -27,7 +26,6 @@ function getCities() {
   fetch(url)
     .then((response) => response.json())
     .then((result) => {
-      console.log(result)
       result.forEach((element) => {
         let div = document.createElement('div')
         div.setAttribute('id', 'city-' + element.id)
@@ -67,6 +65,10 @@ function getCities() {
     })
 }
 
+/**
+ * Create new cities.
+ * @param {event} e
+ */
 function createCities(e) {
   e.preventDefault()
   let inputs = document.querySelector('#add-city-form').elements
@@ -85,7 +87,7 @@ function createCities(e) {
       ).innerHTML += `<p>Fältet <span>${input.name}</span> får inte vara tomt</p>`
 
       errors = true
-      console.log(input)
+
       input.classList.add('error')
     } else {
       input.classList.remove('error')
@@ -94,7 +96,6 @@ function createCities(e) {
 
   // If errors exist we bail.
   if (errors) {
-    console.log(errors, 'error')
     return
   }
 
@@ -109,7 +110,6 @@ function createCities(e) {
 
   city = JSON.stringify(city)
 
-  console.log(document.querySelector('#add-city-form').elements)
   fetch(url, {
     body: city,
     headers: {
@@ -133,14 +133,16 @@ function createCities(e) {
     })
 }
 
+/**
+ * Change existing city based on id.
+ * @param {string} city_id
+ */
 function changeCities(city_id) {
   let wrapper = document.querySelector('#city-' + city_id)
   let name = wrapper.querySelector('.name').innerHTML
   let population = wrapper.querySelector('.population').innerHTML
 
   let wrapper_content = wrapper.children
-
-  console.log(wrapper_content)
 
   // First we clear text content
   wrapper.textContent = ''
@@ -207,6 +209,11 @@ function changeCities(city_id) {
   })
 }
 
+/**
+ * Delete the city based on id.
+ * @param {string} city_id
+ * @param {string} name
+ */
 function deleteCities(city_id, name) {
   let sure = confirm('Är du säker på att du vill tabort ' + name)
 
@@ -220,12 +227,8 @@ function deleteCities(city_id, name) {
     headers: {
       'Content-Type': 'application/json',
     },
+  }).then((response) => {
+    alert(name + ' Har blivit raderad')
+    getCities()
   })
-    .then((response) => {
-      alert(name + ' Har blivit raderad')
-      getCities()
-    })
-    .catch((error) => {
-      console.error('Error:', error)
-    })
 }
