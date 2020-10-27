@@ -60,7 +60,7 @@ window.onload = () => {
   // Populate abv selectlist
   let abv_selectlist_gt = document.querySelector('#abv-gt')
   let abv_selectlist_lt = document.querySelector('#abv-lt')
-  for (let i = 0; i < 68; i++) {
+  for (let i = 0; i < 55; i++) {
     let opt = document.createElement('option')
     let opt_lt = document.createElement('option')
     opt.value = opt_lt.value = i
@@ -249,9 +249,14 @@ function getAllBeers(page, search_query = '') {
 
         let food_pairing = document.createElement('p')
         food_pairing.setAttribute('class', 'food-pairing')
+        let food_list = ''
+
+        value.food_pairing.forEach((item) => {
+          food_list += '<li>' + item + '</li>'
+        })
+
         card_wrapper.appendChild(food_pairing)
-        food_pairing.innerHTML =
-          'Goes well with:<br><span>' + value.food_pairing + '</span>'
+        food_pairing.innerHTML = 'Goes well with:<ul>' + food_list + '</ul>'
 
         let download_icon = document.createElement('i')
         let download_btn = document.createElement('button')
@@ -523,7 +528,6 @@ function html2pdfCreation(title, target) {
     filename: title + '.pdf',
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: { scale: 1 },
-    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
   }
 
   // Choose the element and save the PDF for our user.
